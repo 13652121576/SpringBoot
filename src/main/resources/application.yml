@@ -1,0 +1,39 @@
+
+server:
+  port: 8081
+
+person:
+   age: 18
+logging:
+  level:
+    com.ydm: debug
+# 默认日志文件名
+#  file: G:/TEST.log
+# 默认日志路径  当前磁盘根目录生成日志文件
+#  path: /spring/log
+# logback.xml路径，默认为classpath:logback.xml
+# config: ./logback.xml
+  pattern:
+#  日志文件打印格式
+#   file: %d{yyyy-mm-dd HH:mm:ss:SSS} ===[%thread] %-5level %logger{50} -%ms%n
+#   控制台日志格式
+#    console: "%d{yyyy-mm-dd HH:mm:ss:SSS} ====[%thread] %-5level %logger{50} -%ms%n"
+
+
+spring:
+  datasource:
+     username: root
+     password: root
+     url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+     driver-class-name: com.mysql.cj.jdbc.Driver
+#模板引擎
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML5
+mybatis:
+    mapper-locations: classpath:mapping/*.xml
+
+
