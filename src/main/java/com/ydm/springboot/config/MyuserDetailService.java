@@ -1,4 +1,4 @@
-package com.ydm.springboot.Config;
+package com.ydm.springboot.config;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

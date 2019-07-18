@@ -1,4 +1,4 @@
-package com.ydm.springboot.Config;
+package com.ydm.springboot.config;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
