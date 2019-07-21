@@ -1,6 +1,9 @@
 package com.ydm.springboot.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -8,10 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class LoginController {
-
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
     @RequestMapping("/login")
     public String userLogin(){
-        return "demo-sign";
+        logger.info("登录页面跳转。。。。 ");
+        return "login";
     }
 
     @RequestMapping("/login-error")
