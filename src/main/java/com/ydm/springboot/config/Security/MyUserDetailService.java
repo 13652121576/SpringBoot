@@ -1,6 +1,7 @@
-package com.ydm.springboot.config;
+package com.ydm.springboot.config.Security;
 
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
+import com.ydm.springboot.entity.SysUser;
+import com.ydm.springboot.service.SysUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,9 @@ public class MyUserDetailService implements UserDetailsService {
     private static final Logger logger = LoggerFactory.getLogger(UserDetailsService.class);
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private MyPasswordEncoder passwordEncoder;
+    @Autowired
+    private SysUserService sysUserService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -25,9 +28,10 @@ public class MyUserDetailService implements UserDetailsService {
         if(username.equals("admin"))
         {
             logger.info("用户名"+username);
-            logger.info("用户密码"+passwordEncoder.encode("123456"));
+            logger.info("用户密码"+passwordEncoder.encode("112233"));
+            SysUser sysUser = sysUserService.getByUserName(username);
             //假设返回的用户信息如下;
-            UserInfo userInfo=new UserInfo("admin", passwordEncoder.encode("123456"), "ROLE_ADMIN", true,true,true, true);
+            UserInfo userInfo=new UserInfo(sysUser.getUserName(), sysUser.getPassword(), "ROLE_ADMIN", true,true,true, true);
             return userInfo;
 
         }

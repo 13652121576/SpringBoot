@@ -1,4 +1,4 @@
-package com.ydm.springboot.config;
+package com.ydm.springboot.config.Security;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private SysAuthenctiationFailureHandler sysAuthenctiationFailureHandler;
+    @Autowired
+    private SysAuthenticationSuccessHandler sysAuthenticationSuccessHandler;
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -25,16 +30,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // TODO Auto-generated method stub
         //super.configure(http);
         http
-                .formLogin().loginPage("/login").loginProcessingUrl("/login/form").permitAll()  //表单登录，permitAll()表示这个不需要验证 登录页面，登录失败页面
+                .formLogin().loginPage("/login").loginProcessingUrl("/login/form")
+                .failureHandler(sysAuthenctiationFailureHandler)
+                .successHandler(sysAuthenticationSuccessHandler)
                 .and()
-                .authorizeRequests().antMatchers("/login").permitAll()
+                .authorizeRequests().antMatchers("/login").permitAll() //表单登录，permitAll()表示这个不需要验证 登录页面，登录失败页面
                 .anyRequest().authenticated()
                 .and().csrf().disable();
     }
     @Override
     public void configure(WebSecurity web) throws Exception {
         //解决静态资源被拦截的问题
-        web.ignoring().antMatchers("/css/**","/plugins/**","/js/**","/html/**","/images/**");
+        web.ignoring().antMatchers("/druid/**","/css/**","/plugins/**","/js/**","/html/**","/images/**");
     }
 
 //    @Override
