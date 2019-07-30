@@ -21,5 +21,9 @@ layui.use(['form','layer','jquery'], function () {
         })
         return false;
     })
+    $("#imgCode").on('click',function(){
+        $("#imgCode").attr("src", "/getVerifyCode?" + Math.random());
+    })
+
 
 });

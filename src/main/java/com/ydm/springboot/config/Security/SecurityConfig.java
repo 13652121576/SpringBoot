@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -27,14 +28,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        ValidateCodeFilter validateCodeFilter = new ValidateCodeFilter(sysAuthenctiationFailureHandler);
         // TODO Auto-generated method stub
         //super.configure(http);
-        http
+            http
+                .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .formLogin().loginPage("/login").loginProcessingUrl("/login/form")
                 .failureHandler(sysAuthenctiationFailureHandler)
                 .successHandler(sysAuthenticationSuccessHandler)
                 .and()
-                .authorizeRequests().antMatchers("/login").permitAll() //表单登录，permitAll()表示这个不需要验证 登录页面，登录失败页面
+                .authorizeRequests().antMatchers("/login","/getVerifyCode").permitAll() //表单登录，permitAll()表示这个不需要验证 登录页面，登录失败页面
                 .anyRequest().authenticated()
                 .and().csrf().disable();
     }
