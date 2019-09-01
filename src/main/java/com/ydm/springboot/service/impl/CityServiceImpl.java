@@ -1,6 +1,6 @@
 package com.ydm.springboot.service.impl;
 
-import com.ydm.springboot.dao.CityDao;
+import com.ydm.springboot.mapper.CityDao;
 import com.ydm.springboot.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

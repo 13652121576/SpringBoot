@@ -1,13 +1,12 @@
-package com.ydm.springboot.dao;
+package com.ydm.springboot.mapper;
 
 
-import com.ydm.springboot.entity.SysUser;
-import org.apache.ibatis.annotations.Mapper;
+import com.ydm.springboot.entity.SysPower;
 
 import java.util.List;
 import java.util.Map;
-@Mapper
-public interface SysUserMapper{
+
+public interface SysPowerMapper{
 
 	 /**
 	  * 
@@ -35,14 +34,7 @@ public interface SysUserMapper{
 	  * 查询（根据主键ID查询）
 	  * 
 	  */
-	 SysUser getById(String id);
-
-	 /**
-	  *
-	  * 查询（根据主键ID查询）
-	  *
-	  */
-	 SysUser getByUserName(String userName);
+	 SysPower getById(String id);
 
 	 /**
 	  * 
@@ -56,5 +48,5 @@ public interface SysUserMapper{
 	  * getList的方法
 	  * 
 	  */
-	 List<SysUser> getList(Map<String, Object> paramMap);
+	 List<SysPower> getList(Map<String, Object> paramMap);
 }

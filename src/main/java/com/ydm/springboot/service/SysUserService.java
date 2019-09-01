@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.ydm.springboot.comm.ServerResponse;
 import com.ydm.springboot.comm.util.Page;
+import com.ydm.springboot.entity.SysPower;
 import com.ydm.springboot.entity.SysUser;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,7 +25,7 @@ public interface SysUserService{
 	  * 修改对象的方法
 	  * 
 	  */
-//	 public ServerResponse update(Map<String, Object> paramMap);
+	 public ServerResponse update(Map<String, Object> paramMap);
 
 	 /**
 	  * 
@@ -53,52 +54,52 @@ public interface SysUserService{
 	  */
 	 public List<SysUser> getList(Map<String, Object> paramMap);
 
-//	 /**
-//	  *
-//	  * getPageList的方法
-//	  *
-//	  */
-//	 public Page getPageList(Map<String, Object> paramMap);
-//
-//	 /**
-//	  *
-//	  * getMapList的方法
-//	  *
-//	  */
-//	 public ServerResponse getMapList(Map<String, Object> paramMap);
-//
-//	 /**
-//	  *
-//	  * 用户修改个人头像方法
-//	 * @throws Exception
-//	  *
-//	  */
-//	 ServerResponse updatePic(MultipartFile file, String id) throws Exception;
-//
-//	 /**
-//	  *
-//	  * 用户修改个人信息方法
-//	  *
-//	  */
-//	 ServerResponse updateBaseInfo(Map<String, Object> paramMap);
-//
-//	 /**
-//	  *
-//	  * 修改用户密码的方法
-//	  *
-//	  */
-//	 ServerResponse updatePassword(Map<String, Object> paramMap);
-//
-//	 /**
-//	  * 获取用户操作权限
-//	  *
-//	  */
-////	 List<SysPower> getPowerList(Map<String, Object> paramMap);
-//
-//	 /**
-//	  * 获取用户导航权限
-//	  *
-//	  */
-//	 List<Object> getMenuList();
+	 /**
+	  *
+	  * getPageList的方法
+	  *
+	  */
+	 public Page getPageList(Map<String, Object> paramMap);
+
+	 /**
+	  *
+	  * getMapList的方法
+	  *
+	  */
+	 public ServerResponse getMapList(Map<String, Object> paramMap);
+
+	 /**
+	  *
+	  * 用户修改个人头像方法
+	 * @throws Exception
+	  *
+	  */
+	 ServerResponse updatePic(MultipartFile file, String id) throws Exception;
+
+	 /**
+	  *
+	  * 用户修改个人信息方法
+	  *
+	  */
+	 ServerResponse updateBaseInfo(Map<String, Object> paramMap);
+
+	 /**
+	  *
+	  * 修改用户密码的方法
+	  *
+	  */
+	 ServerResponse updatePassword(Map<String, Object> paramMap);
+
+	 /**
+	  * 获取用户操作权限
+	  *
+	  */
+	 List<SysPower> getPowerList();
+
+	 /**
+	  * 获取用户导航权限
+	  *
+	  */
+	 List<Object> getMenuList();
 
 }

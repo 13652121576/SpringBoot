@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.io.Serializable;
 import java.util.Collection;
 
-class UserInfo implements Serializable, UserDetails {
+public class UserInfo implements Serializable, UserDetails {
     /**
      *springsecrity 需要认证的用户
      */

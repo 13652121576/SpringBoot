@@ -1,4 +1,4 @@
-package com.ydm.springboot.dao;
+package com.ydm.springboot.mapper;
 
 
 import org.apache.ibatis.annotations.Mapper;
