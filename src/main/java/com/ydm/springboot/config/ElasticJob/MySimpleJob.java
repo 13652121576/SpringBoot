@@ -14,7 +14,7 @@ import com.dangdang.elasticjob.lite.annotation.ElasticSimpleJob;
 import org.springframework.stereotype.Component;
 
 
-@ElasticSimpleJob(cron = "0/10 * * * * ?", jobName = "test123", shardingTotalCount = 2, jobParameter = "测试参数", shardingItemParameters = "0=A,1=B")
+@ElasticSimpleJob(cron = "0/30 * * * * ?", jobName = "test123", shardingTotalCount = 2, jobParameter = "测试参数", shardingItemParameters = "0=A,1=B")
 @Component
 public class MySimpleJob implements SimpleJob {
     @Override
