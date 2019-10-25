@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ydm.springboot.comm.ServerResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,11 +30,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class SysAuthenctiationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	
-	@Autowired
-	private ObjectMapper objectMapper;
 
-	
 	/* (non-Javadoc)
 	 * @see org.springframework.security.web.authentication.AuthenticationFailureHandler#onAuthenticationFailure(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, org.springframework.security.core.AuthenticationException)
 	 */
@@ -43,7 +40,7 @@ public class SysAuthenctiationFailureHandler extends SimpleUrlAuthenticationFail
 		logger.info("登录失败");
 //		response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());//服务器响应500
 		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().write(objectMapper.writeValueAsString(ServerResponse.createByErrorMessage(exception.getMessage())));
+		response.getWriter().write(JSONObject.toJSONString(ServerResponse.createByErrorMessage(exception.getMessage())));
 
 	}
 

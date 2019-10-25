@@ -36,13 +36,15 @@ layui.config({
 	// 主入口
 	window.exit = function() {
 		$.ajax({
-			url : basePath+'login/exit',
+			url : basePath+'logout',
 			type : 'get',
 			dataType : 'json',
 			success : function(resData) {
-				window.location.href = basePath+"login.html";
+                console.log(resData);
+				window.location.href = basePath+"login";
 			},
-			error : function(XMLHttpRequest, textStatus, errorThrown) {
+			error : function() {
+                console.log(resData);
 				layer.alert('系统错误，请联系管理员！');
 			}
 		});

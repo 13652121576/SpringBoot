@@ -39,6 +39,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests().antMatchers("/login","/getVerifyCode").permitAll() //表单登录，permitAll()表示这个不需要验证 登录页面，登录失败页面
                 .anyRequest().authenticated()
+                .and()
+                .logout()   //退出登录相关配置
+                .logoutUrl("/logout")//自定义退出的地址
+                .logoutSuccessUrl("/login")//退出之后跳转到注册页面
+                .logoutSuccessHandler(new MyLogoutSuccessHandler())//退出成功后的操作
+                .deleteCookies("JSESSIONID")//删除当前的JSESSIONID
                 .and().csrf().disable();
     }
     @Override

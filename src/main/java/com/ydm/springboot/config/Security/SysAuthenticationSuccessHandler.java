@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ydm.springboot.comm.ServerResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,18 +30,13 @@ public class SysAuthenticationSuccessHandler extends SavedRequestAwareAuthentica
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	@Autowired
-	private ObjectMapper objectMapper;
-
-
-
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 
 		logger.info("登录成功");
 		response.setContentType("application/json;charset=UTF-8");
-		response.getWriter().write(objectMapper.writeValueAsString(ServerResponse.createBySuccessMessage(authentication.toString())));
+		response.getWriter().write(JSONObject.toJSONString(ServerResponse.createBySuccessMessage(authentication.toString())));
 
 
 	}
