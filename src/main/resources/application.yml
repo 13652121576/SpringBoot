@@ -22,7 +22,7 @@ logging:
 spring:
   datasource:
     username: root
-    password: root
+    password: P@ssw0rd
     url: jdbc:mysql://localhost:3306/ydm?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
@@ -51,9 +51,9 @@ mybatis:
     mapper-locations: classpath:mapping/*.xml
 
 
-elaticjob:
- zookeeper:
-  server-lists: 39.97.105.105:2181
-  namespace: my-project
+#elaticjob:
+# zookeeper:
+#  server-lists: 39.97.105.105:2181
+#  namespace: my-project
 
 
