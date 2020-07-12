@@ -36,6 +36,7 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException("密码不正确");
         }
         Collection<? extends GrantedAuthority> authorities = userInfo.getAuthorities();
+
         // 构建返回的用户登录成功的token
         return new UsernamePasswordAuthenticationToken(userInfo, password, authorities);
     }

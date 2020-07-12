@@ -21,7 +21,6 @@ import com.ydm.springboot.entity.SysUser;
 import com.ydm.springboot.service.SysUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -232,16 +231,15 @@ public class SysUserServiceImpl implements SysUserService {
 		 }
 	 }
 
-	 /**
+	/**
 	  * 获取用户操作权限
 	  * @return
 	  */
 	 @Override
-	 public List<SysPower> getPowerList(){
-		 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		 SysUser sysUser = this.getByUserName(((UserInfo)authentication.getPrincipal()).getUsername());
+	 public List<SysPower> getPowerList(String id){
+
 		 HashMap<String, Object> map = new HashMap<String, Object>();
-		 map.put("roleId", sysUser.getRoleId());
+		 map.put("id", id);
 		 List<SysPower> list = sysPowerMapper.getList(map);
 		 return list;
 	 }

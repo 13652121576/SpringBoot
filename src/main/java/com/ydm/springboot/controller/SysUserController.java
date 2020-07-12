@@ -15,6 +15,7 @@ import com.ydm.springboot.entity.SysPower;
 import com.ydm.springboot.entity.SysUser;
 import com.ydm.springboot.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -77,7 +78,8 @@ public class SysUserController {
 	  * 
 	  */
 	 @ResponseBody
-	 @RequestMapping(value="/getList") 
+	 @RequestMapping(value="/getList")
+	 @PreAuthorize("hasAuthority('/sys/user')")
 	 public List<SysUser> getList(@RequestBody(required=false) Map<String,Object> paramMap) {
 		 return service.getList(paramMap);
 	 }
@@ -157,11 +159,11 @@ public class SysUserController {
 	 /**
 	  * 获取用户操作权限数据
 	  */
-	 @ResponseBody
-	 @RequestMapping(value="/getPowerList")
-	 public List<SysPower> getPowerList() {
-		 return service.getPowerList();
-	 }
+//	 @ResponseBody
+//	 @RequestMapping(value="/getPowerList")
+//	 public List<SysPower> getPowerList() {
+//		 return service.getPowerList();
+//	 }
 
 	 /**
 	  * 获取导航菜单数据

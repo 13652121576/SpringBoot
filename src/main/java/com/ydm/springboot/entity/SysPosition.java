@@ -27,6 +27,9 @@ public class SysPosition implements Serializable {
 	 /**描述**/
 	 private String description;
 
+	 /**url**/
+	 private String actionUrl;
+
 	 /**修改时间**/
 	 private Date updateTime;
 
@@ -36,8 +39,15 @@ public class SysPosition implements Serializable {
 	 /**是否有效:0.无效1.有效**/
 	 private Integer isValid;
 
+	public String getActionUrl() {
+		return actionUrl;
+	}
 
-	 public void setId(String id){
+	public void setActionUrl(String actionUrl) {
+		this.actionUrl = actionUrl;
+	}
+
+	public void setId(String id){
 		 this.id = id == null ? null : id.trim();
 	 }
 

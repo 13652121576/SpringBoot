@@ -1,11 +1,13 @@
 package com.ydm.springboot.config.Security;
 
+import com.ydm.springboot.entity.SysPower;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 public class UserInfo implements Serializable, UserDetails {
     /**
@@ -15,16 +17,18 @@ public class UserInfo implements Serializable, UserDetails {
     private String username;
     private String password;
     private String role;
+    private Collection<GrantedAuthority> authorities;
     private boolean accountNonExpired;
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean enabled;
-    public UserInfo(String username, String password, String role, boolean accountNonExpired, boolean accountNonLocked,
+    public UserInfo(String username, String password,Collection<GrantedAuthority> authorities, String role, boolean accountNonExpired, boolean accountNonLocked,
                     boolean credentialsNonExpired, boolean enabled) {
         // TODO Auto-generated constructor stub
         this.username = username;
         this.password = password;
         this.role = role;
+        this.authorities = authorities;
         this.accountNonExpired = accountNonExpired;
         this.accountNonLocked = accountNonLocked;
         this.credentialsNonExpired = credentialsNonExpired;
@@ -34,7 +38,7 @@ public class UserInfo implements Serializable, UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // TODO Auto-generated method stub
-        return AuthorityUtils.commaSeparatedStringToAuthorityList(role);
+        return authorities;
     }
     @Override
     public String getPassword() {
@@ -66,4 +70,10 @@ public class UserInfo implements Serializable, UserDetails {
         // TODO Auto-generated method stub
         return enabled;
     }
+
+    public void setAuthorities(Collection<GrantedAuthority> authorities) {
+        this.authorities = authorities;
+    }
+
+
 }

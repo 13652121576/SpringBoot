@@ -94,7 +94,7 @@ public interface SysUserService{
 	  * 获取用户操作权限
 	  *
 	  */
-	 List<SysPower> getPowerList();
+		 List<SysPower> getPowerList(String id);
 
 	 /**
 	  * 获取用户导航权限
